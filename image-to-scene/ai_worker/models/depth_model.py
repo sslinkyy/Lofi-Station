@@ -77,11 +77,12 @@ class DepthProModel:
                     urllib.request.urlretrieve(checkpoint_url, checkpoint_path)
                     logger.info(f"✓ Checkpoint downloaded to {checkpoint_path}")
 
-            # Load model and preprocessing transform with checkpoint
+            # Load model and preprocessing transform with checkpoint path
+            logger.info(f"Loading model from checkpoint: {checkpoint_path}")
             self.model, self.transform = depth_pro.create_model_and_transforms(
-                device=self.device,
-                precision=torch.float32
+                checkpoint_path=str(checkpoint_path)
             )
+            self.model = self.model.to(self.device)
             self.model.eval()
 
             logger.info(f"✓ Depth Pro loaded on {self.device}")
