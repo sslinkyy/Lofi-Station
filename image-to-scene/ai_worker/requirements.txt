@@ -1,0 +1,64 @@
+# Core Framework
+fastapi==0.115.0
+uvicorn[standard]==0.34.0
+pydantic==2.10.0
+pydantic-settings==2.6.0
+
+# PyTorch (install separately with CUDA)
+# pip install torch torchvision --index-url https://download.pytorch.org/whl/cu118
+
+# Transformers & Vision Models
+transformers>=4.57.0
+accelerate==1.2.1
+sentencepiece==0.2.0
+protobuf==5.29.1
+timm==1.0.12  # Required for SAM2 and vision transformers
+bitsandbytes==0.45.0  # For 4-bit/8-bit quantization
+
+# Image Processing
+Pillow==11.0.0
+opencv-python==4.10.0.84
+scikit-image==0.24.0
+numpy==2.2.0
+
+# 3D Processing
+open3d==0.18.0
+trimesh==4.5.3
+
+# HTTP & Async
+httpx==0.28.1
+aiofiles==24.1.0
+python-multipart==0.0.20
+
+# Caching & Storage
+redis==5.2.0  # Optional, for distributed caching
+diskcache==5.6.3
+
+# Utilities
+pyyaml==6.0.2
+python-dotenv==1.0.1
+tqdm==4.67.1
+
+# Validation & Testing
+pytest==8.3.4
+pytest-asyncio==0.24.0
+httpx==0.28.1  # For testing FastAPI
+
+# Specific Model Dependencies
+# SAM2
+git+https://github.com/facebookresearch/segment-anything-2.git
+
+# Depth Pro (Apple)
+# git+https://github.com/apple/ml-depth-pro.git
+
+# RGB↔X (will need manual setup)
+# See: https://github.com/zheng95z/rgbx
+
+# MILo (will need manual setup)
+# See: https://github.com/Anttwo/MILo
+
+# Hugging Face Models (auto-download)
+# - Qwen3-VL: Qwen/Qwen3-VL-8B-Instruct
+# - DeepSeek-OCR: deepseek-ai/DeepSeek-OCR
+# - Metric3D: YvanYin/Metric3D
+# - OneFormer: shi-labs/oneformer_ade20k_swin_large

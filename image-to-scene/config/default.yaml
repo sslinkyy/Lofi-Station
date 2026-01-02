@@ -1,0 +1,100 @@
+# Image-to-Scene Configuration
+
+worker:
+  host: "127.0.0.1"
+  port: 8000
+  workers: 1
+  reload: true  # Development mode
+
+models:
+  # Depth estimation
+  depth:
+    primary: "depth-pro"  # depth-pro | sharp | metric3d-v2
+    fallback: "depth-pro"
+    device: "cuda"  # cuda | cpu
+
+  # Vision Language Model
+  vlm:
+    primary: "qwen3-vl-8b"  # qwen3-vl-8b | qwen3-vl-30b | fastvlm-7b
+    device: "cuda"
+    quantization: "4bit"  # none | 4bit | 8bit
+    max_new_tokens: 2048
+
+  # Segmentation
+  segmentation:
+    objects: "sam2"  # sam2 | fastsam
+    structure: "oneformer"  # oneformer | sam2
+    device: "cuda"
+
+  # Materials & Lighting
+  materials:
+    intrinsic: "rgb-x"  # rgb-x | simple_sampling
+    device: "cuda"
+
+pipeline:
+  modes:
+    fast:
+      depth: "depth-pro"
+      vlm: "fastvlm-7b"
+      timeout_s: 10
+
+    balanced:
+      depth: "depth-pro"
+      vlm: "qwen3-vl-8b"
+      timeout_s: 30
+
+    hq:
+      depth: "metric3d-v2"
+      vlm: "qwen3-vl-8b"
+      materials: "rgb-x"
+      timeout_s: 60
+
+  # Parallel execution
+  parallel_execution: true
+
+  # Caching
+  cache:
+    enabled: true
+    backend: "disk"  # disk | redis
+    ttl_hours: 24
+    max_size_gb: 10
+
+scene:
+  # Style presets
+  style_presets:
+    lofi:
+      render_engine: "EEVEE"
+      bloom: true
+      grain_strength: 0.15
+      vignette: true
+
+    realistic:
+      render_engine: "CYCLES"
+      samples: 128
+      denoising: true
+
+    architectural:
+      render_engine: "EEVEE"
+      bloom: false
+      sharp_shadows: true
+
+  # Asset library
+  assets:
+    library_path: "./assets"
+    auto_replace_proxies: true
+    format_priority: ["blend", "gltf", "procedural"]
+
+  # Animation
+  animation:
+    default_preset: "minimal"  # none | minimal | lofi | full
+    loop_duration_frames: 120
+
+verification:
+  enabled: false  # Enable verification loop
+  max_iterations: 5
+  convergence_threshold: 0.85
+
+development:
+  debug: true
+  save_intermediate: true
+  verbose_logging: true

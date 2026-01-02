@@ -1,0 +1,70 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+*.egg-info/
+dist/
+build/
+
+# AI Worker
+ai_worker/cache/*
+!ai_worker/cache/.gitkeep
+ai_worker/checkpoints/
+ai_worker/model_cache/
+*.pt
+*.pth
+*.bin
+*.safetensors
+*.onnx
+
+# Blender
+*.blend1
+*.blend2
+*~.blend
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+logs/
+
+# Test outputs
+tests/outputs/
+tests/renders/
+
+# Environment
+.env
+.env.local
+config/local.yaml
+
+# Large files
+*.mp4
+*.avi
+*.mov
+*.zip
+*.tar.gz
+
+# Model weights (too large for git)
+models/*.pt
+models/*.pth
+checkpoints/
+
+# Temporary
+tmp/
+temp/
+*.tmp

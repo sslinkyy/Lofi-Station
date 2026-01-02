@@ -1,0 +1,96 @@
+{
+  "camera": {
+    "fov_deg": 45.0,
+    "pitch_deg": -10.0,
+    "yaw_deg": 0.0,
+    "roll_deg": 0.0,
+    "position_hint": [0.0, -3.5, 1.5]
+  },
+  "room": {
+    "dimensions_m": [3.5, 4.0, 2.6],
+    "planes": [
+      {
+        "name": "floor",
+        "normal": [0.0, 0.0, 1.0],
+        "distance": 0.0
+      },
+      {
+        "name": "back_wall",
+        "normal": [0.0, 1.0, 0.0],
+        "distance": 4.0
+      }
+    ],
+    "window": null
+  },
+  "objects": [
+    {
+      "id": "table_01",
+      "type": "table",
+      "bbox_px": [600, 700, 1320, 950],
+      "world_position": [0.0, 2.0, 0.75],
+      "world_rotation": [0.0, 0.0, 0.0],
+      "world_scale": [1.5, 0.8, 0.75],
+      "proxy_type": "box_subdiv",
+      "confidence": 0.95
+    },
+    {
+      "id": "laptop_01",
+      "type": "laptop",
+      "bbox_px": [780, 720, 1100, 820],
+      "world_position": [0.0, 2.0, 1.0],
+      "world_rotation": [0.0, 0.0, -5.0],
+      "world_scale": [0.35, 0.25, 0.02],
+      "proxy_type": "box_subdiv",
+      "confidence": 0.87
+    }
+  ],
+  "lighting": {
+    "key_light": {
+      "type": "area",
+      "position": [1.5, 1.0, 2.5],
+      "rotation": [45.0, -20.0, 0.0],
+      "temp_kelvin": 5500,
+      "strength": 120.0,
+      "size": 0.5
+    },
+    "fill_light": {
+      "type": "area",
+      "position": [-1.2, 2.5, 2.0],
+      "rotation": [60.0, 15.0, 0.0],
+      "temp_kelvin": 6500,
+      "strength": 40.0,
+      "size": 0.4
+    },
+    "ambient": {
+      "type": "world",
+      "temp_kelvin": 5000,
+      "strength": 0.25
+    }
+  },
+  "materials": [
+    {
+      "target_id": "table_01",
+      "base_color": [0.55, 0.45, 0.38],
+      "roughness": 0.65,
+      "metallic": 0.0
+    },
+    {
+      "target_id": "laptop_01",
+      "base_color": [0.15, 0.15, 0.15],
+      "roughness": 0.4,
+      "metallic": 0.3
+    },
+    {
+      "target_id": "floor",
+      "base_color": [0.7, 0.65, 0.6],
+      "roughness": 0.8,
+      "metallic": 0.0
+    },
+    {
+      "target_id": "walls",
+      "base_color": [0.9, 0.88, 0.86],
+      "roughness": 0.9,
+      "metallic": 0.0
+    }
+  ]
+}

@@ -1,0 +1,183 @@
+{
+  "camera": {
+    "fov_deg": 50.0,
+    "pitch_deg": -5.0,
+    "yaw_deg": 0.0,
+    "roll_deg": 0.0,
+    "position_hint": [0.0, -4.5, 1.6]
+  },
+  "room": {
+    "dimensions_m": [4.0, 5.0, 2.6],
+    "planes": [
+      {
+        "name": "floor",
+        "normal": [0.0, 0.0, 1.0],
+        "distance": 0.0
+      },
+      {
+        "name": "back_wall",
+        "normal": [0.0, 1.0, 0.0],
+        "distance": 5.0
+      },
+      {
+        "name": "left_wall",
+        "normal": [1.0, 0.0, 0.0],
+        "distance": 2.0
+      },
+      {
+        "name": "right_wall",
+        "normal": [-1.0, 0.0, 0.0],
+        "distance": 2.0
+      },
+      {
+        "name": "ceiling",
+        "normal": [0.0, 0.0, -1.0],
+        "distance": 2.6
+      }
+    ],
+    "window": {
+      "wall": "back_wall",
+      "rect_world": {
+        "x": -0.8,
+        "y": 4.9,
+        "width": 1.6,
+        "height": 1.4
+      }
+    }
+  },
+  "objects": [
+    {
+      "id": "bed_01",
+      "type": "bed",
+      "bbox_px": [320, 600, 1400, 950],
+      "world_position": [0.3, 2.5, 0.45],
+      "world_rotation": [0.0, 0.0, 12.0],
+      "world_scale": [2.1, 1.4, 0.5],
+      "proxy_type": "box_subdiv",
+      "confidence": 0.92
+    },
+    {
+      "id": "desk_01",
+      "type": "desk",
+      "bbox_px": [1450, 720, 1800, 920],
+      "world_position": [1.3, 1.8, 0.75],
+      "world_rotation": [0.0, 0.0, -15.0],
+      "world_scale": [1.2, 0.6, 0.75],
+      "proxy_type": "box_subdiv",
+      "confidence": 0.88
+    },
+    {
+      "id": "chair_01",
+      "type": "chair",
+      "bbox_px": [1520, 850, 1680, 1000],
+      "world_position": [1.2, 1.2, 0.5],
+      "world_rotation": [0.0, 0.0, 25.0],
+      "world_scale": [0.5, 0.5, 0.95],
+      "proxy_type": "box_subdiv",
+      "confidence": 0.85
+    },
+    {
+      "id": "plant_01",
+      "type": "plant",
+      "bbox_px": [180, 820, 280, 1000],
+      "world_position": [-1.5, 3.2, 0.4],
+      "world_rotation": [0.0, 0.0, 0.0],
+      "world_scale": [0.3, 0.3, 0.6],
+      "proxy_type": "lowpoly_mesh",
+      "confidence": 0.78
+    },
+    {
+      "id": "lamp_01",
+      "type": "lamp",
+      "bbox_px": [1650, 680, 1750, 780],
+      "world_position": [1.4, 1.9, 1.5],
+      "world_rotation": [0.0, 0.0, 0.0],
+      "world_scale": [0.2, 0.2, 0.4],
+      "proxy_type": "lowpoly_mesh",
+      "confidence": 0.81
+    },
+    {
+      "id": "person_01",
+      "type": "person",
+      "bbox_px": [520, 520, 780, 900],
+      "world_position": [0.0, 3.0, 0.85],
+      "world_rotation": [0.0, 0.0, -8.0],
+      "world_scale": [0.5, 0.1, 1.7],
+      "proxy_type": "card_cutout",
+      "confidence": 0.89
+    }
+  ],
+  "lighting": {
+    "key_light": {
+      "type": "area",
+      "position": [-0.8, 4.8, 2.0],
+      "rotation": [90.0, 0.0, 0.0],
+      "temp_kelvin": 6500,
+      "strength": 15.0,
+      "size": 0.8
+    },
+    "fill_light": {
+      "type": "area",
+      "position": [1.5, 1.0, 2.2],
+      "rotation": [45.0, -30.0, 0.0],
+      "temp_kelvin": 2700,
+      "strength": 80.0,
+      "size": 0.3
+    },
+    "ambient": {
+      "type": "world",
+      "temp_kelvin": 5000,
+      "strength": 0.3
+    }
+  },
+  "materials": [
+    {
+      "target_id": "bed_01",
+      "base_color": [0.82, 0.76, 0.71],
+      "roughness": 0.75,
+      "metallic": 0.0
+    },
+    {
+      "target_id": "desk_01",
+      "base_color": [0.45, 0.35, 0.28],
+      "roughness": 0.6,
+      "metallic": 0.0
+    },
+    {
+      "target_id": "chair_01",
+      "base_color": [0.25, 0.28, 0.32],
+      "roughness": 0.7,
+      "metallic": 0.0
+    },
+    {
+      "target_id": "plant_01",
+      "base_color": [0.2, 0.45, 0.25],
+      "roughness": 0.85,
+      "metallic": 0.0
+    },
+    {
+      "target_id": "lamp_01",
+      "base_color": [0.9, 0.88, 0.85],
+      "roughness": 0.3,
+      "metallic": 0.1
+    },
+    {
+      "target_id": "floor",
+      "base_color": [0.65, 0.58, 0.52],
+      "roughness": 0.8,
+      "metallic": 0.0
+    },
+    {
+      "target_id": "walls",
+      "base_color": [0.88, 0.85, 0.82],
+      "roughness": 0.9,
+      "metallic": 0.0
+    },
+    {
+      "target_id": "ceiling",
+      "base_color": [0.95, 0.95, 0.95],
+      "roughness": 0.95,
+      "metallic": 0.0
+    }
+  ]
+}
