@@ -46,9 +46,42 @@ class DepthProModel:
                     "cd external/depth-pro && pip install -e ."
                 )
 
-            # Load model and preprocessing transform
-            self.model, self.transform = depth_pro.create_model_and_transforms()
-            self.model = self.model.to(self.device)
+            # Download checkpoint if needed
+            import os
+            from pathlib import Path
+
+            checkpoint_dir = Path("./checkpoints")
+            checkpoint_path = checkpoint_dir / "depth_pro.pt"
+
+            if not checkpoint_path.exists():
+                logger.info("Downloading Depth Pro checkpoint (~1.8GB, first time only)...")
+                checkpoint_dir.mkdir(parents=True, exist_ok=True)
+
+                try:
+                    # Try using huggingface_hub for better progress tracking
+                    from huggingface_hub import hf_hub_download
+                    logger.info("Downloading from HuggingFace Hub...")
+                    downloaded_path = hf_hub_download(
+                        repo_id="apple/DepthPro",
+                        filename="depth_pro.pt",
+                        cache_dir=str(checkpoint_dir.parent),
+                        local_dir=str(checkpoint_dir),
+                        local_dir_use_symlinks=False
+                    )
+                    logger.info(f"✓ Checkpoint downloaded")
+                except ImportError:
+                    # Fallback to urllib
+                    logger.info("Using fallback download (no progress bar)...")
+                    import urllib.request
+                    checkpoint_url = "https://huggingface.co/apple/DepthPro/resolve/main/depth_pro.pt"
+                    urllib.request.urlretrieve(checkpoint_url, checkpoint_path)
+                    logger.info(f"✓ Checkpoint downloaded to {checkpoint_path}")
+
+            # Load model and preprocessing transform with checkpoint
+            self.model, self.transform = depth_pro.create_model_and_transforms(
+                device=self.device,
+                precision=torch.float32
+            )
             self.model.eval()
 
             logger.info(f"✓ Depth Pro loaded on {self.device}")
